@@ -104,8 +104,8 @@ app.post('/todos/:id/tasks',(req, res)=>{ // para agregar usuarios tercera parte
         const { id } = req.params;
            tasksID=1;
            todoid=id;
-           userid=id;
            var ELID=1;
+           const Eluser=todos.find((Eluser)=> Eluser.id === Number(id));
            tasks.forEach(x =>{
            if(x.id == ELID)
            {
@@ -113,6 +113,7 @@ app.post('/todos/:id/tasks',(req, res)=>{ // para agregar usuarios tercera parte
            } 
             ELID++;
            });
+           userid=Eluser.userid;
         tasks.push({tasksID,title,completed,todoid,userid});
         const Task = tasks[tasks.length - 1];
         res.json({ok: true, Task});
